@@ -7,8 +7,10 @@
 
 #ifdef MACHINE_TYPE_DEFAULT
     #include "Machines/i2s_out_xyz_mks_dlc32.h"
-#else
+#elif MACHINE_TYPE_COREXY
     #include "Machines/i2s_out_corexy_mks_dlc32.h"
+#elif MACHINE_TYPE_LASERBOX
+    #include "Machines/i2s_out_xyz_laserbox_esp32.h"
 #endif
 
 #else
