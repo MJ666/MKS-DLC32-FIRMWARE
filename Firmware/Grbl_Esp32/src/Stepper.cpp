@@ -221,6 +221,7 @@ void IRAM_ATTR onStepperDriverTimer(void* para) {
  */
 static void stepper_pulse_func() {
     auto n_axis = number_axis->get();
+
     if (motors_direction(st.dir_outbits)) {
         auto wait_direction = direction_delay_microseconds->get();
         if (wait_direction > 0) {
@@ -230,7 +231,6 @@ static void stepper_pulse_func() {
                     i2s_out_push_sample(wait_direction);
                     break;
                 case ST_I2S_STATIC:
-                    
                 case ST_TIMED: {
                     // wait for step pulse time to complete...some time expired during code above
                     //
@@ -302,7 +302,6 @@ static void stepper_pulse_func() {
     if (sys_probe_state == Probe::Active) {
         probe_state_monitor();
     }
-    
     // Reset step out bits.
     st.step_outbits = 0;
 
@@ -354,6 +353,7 @@ static void stepper_pulse_func() {
 
 void stepper_init() {
     busy.store(false); 
+
     // grbl_msg_sendf(CLIENT_SERIAL, MsgLevel::Info, "Axis count %d", number_axis->get());
     // grbl_msg_sendf(CLIENT_SERIAL, MsgLevel::Info, "%s", stepper_names[current_stepper]);
 

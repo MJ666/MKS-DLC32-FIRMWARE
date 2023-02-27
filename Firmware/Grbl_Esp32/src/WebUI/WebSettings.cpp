@@ -163,7 +163,6 @@ namespace WebUI {
 }
 
 Error WebCommand::action(char* value, WebUI::AuthenticationLevel auth_level, WebUI::ESPResponseStream* out) {
-    
     if (_cmdChecker && _cmdChecker()) {
         return Error::AnotherInterfaceBusy;
     }
@@ -788,7 +787,6 @@ namespace WebUI {
 
     static Error listSDFiles(char* parameter, AuthenticationLevel auth_level) {  // ESP210
         SDState state = get_sd_state(true);
-
         if (state != SDState::Idle) {
             if (state == SDState::NotPresent) {
                 webPrintln("No SD Card");
@@ -798,7 +796,6 @@ namespace WebUI {
                 return Error::FsFailedBusy;
             }
         }
-        
         webPrintln("");
         listDir(SD, "/", 10, espresponse->client());
         String ssd = "[SD Free:" + ESPResponseStream::formatBytes(SD.totalBytes() - SD.usedBytes());

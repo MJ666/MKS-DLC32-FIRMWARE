@@ -780,11 +780,6 @@ void report_realtime_status(uint8_t client) {
     sprintf(temp, "|Heap:%d", esp.getHeapSize());
     strcat(status, temp);
 #endif
-    // mks fix
-    /**/
-    // sprintf(temp, "|PS:%d|PF:%d",  get_print_power() ,get_print_speed());
-    // strcat(status, temp);
-
     strcat(status, ">\r\n");
     grbl_send(client, status);
 }
@@ -828,6 +823,7 @@ void report_hex_msg(char* buf, const char* prefix, int len) {
         sprintf(temp, " 0x%02X", buf[i]);
         strcat(report, temp);
     }
+
     grbl_msg_sendf(CLIENT_SERIAL, MsgLevel::Info, "%s", report);
 }
 

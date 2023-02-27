@@ -165,7 +165,9 @@ namespace WebUI {
         if (strlen(password) == 0) {
             return true;  //open network
         }
+
         // Limited size. Length is checked automatically by string setting
+
         return true;
     }
 
@@ -440,6 +442,7 @@ namespace WebUI {
     /**
      * Stop WiFi
      */
+
     void WiFiConfig::StopWiFi() {
         //Sanity check
         if ((WiFi.getMode() == WIFI_STA) || (WiFi.getMode() == WIFI_AP_STA)) {
@@ -494,18 +497,15 @@ namespace WebUI {
     void WiFiConfig::begin() {
         //stop active services
         wifi_services.end();
-
         //setup events
         if (!_events_registered) {
             //cumulative function and no remove so only do once
             WiFi.onEvent(WiFiConfig::WiFiEvent);
             _events_registered = true;
         }
-
         //Get hostname
         _hostname       = wifi_hostname->get();
         int8_t wifiMode = wifi_radio_mode->get();
-        
         if (wifiMode == ESP_WIFI_AP) {
             StartAP();
             //start services

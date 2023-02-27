@@ -30,6 +30,7 @@ namespace WebUI {
         static const int TXBUFFERSIZE = 1200;
         static const int RXBUFFERSIZE = 256;
         static const int FLUSHTIMEOUT = 500;
+
     public:
         Serial_2_Socket();
 

@@ -51,10 +51,9 @@ enum class Message : uint8_t {
 #define CLIENT_INPUT 4
 #define CLIENT_LCD  5
 // #define CLIENT_SD  6
-
 #define CLIENT_ALL 0xFF
-#define CLIENT_COUNT 6  // total number of client types regardless if they are used
-// #define CLIENT_COUNT 5  // total number of client types regardless if they are used
+#define CLIENT_COUNT 5  // total number of client types regardless if they are used
+
 enum class MsgLevel : int8_t {  // Use $Message/Level
     None    = 0,
     Error   = 1,

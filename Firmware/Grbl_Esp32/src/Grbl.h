@@ -23,7 +23,7 @@
 // Grbl versioning system
 const char* const GRBL_VERSION       = "1.1h";
 // const char* const GRBL_VERSION       = "1.3a";
-const char* const GRBL_VERSION_BUILD = "20230220";
+const char* const GRBL_VERSION_BUILD = "20230220 (LaserBox ESP32 V1.0";
 
 //#include <sdkconfig.h>
 #include <Arduino.h>

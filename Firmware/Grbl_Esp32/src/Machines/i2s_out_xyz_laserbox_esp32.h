@@ -24,8 +24,6 @@
 
 #define USR_USER_KB  
 
-#define USR_Z_MOTOR
-
 // #define USE_BEEP
 
 // #define USE_BL_TOUCH
@@ -39,7 +37,7 @@
 #ifdef N_AXIS
     #undef N_AXIS
 #endif
-#define N_AXIS 3
+#define N_AXIS 2
 
 #define HTTP_UPLOAD_BUFLEN 1024*10
 
@@ -70,11 +68,9 @@
 #define Y_STEP_PIN                  I2SO(5)
     
 // Z I2S pin set
-#if defined(USR_Z_MOTOR)
 #define Z_DISABLE_PIN               I2SO(0)
 #define Z_DIRECTION_PIN             I2SO(4)
 #define Z_STEP_PIN                  I2SO(3)
-#endif
 
 // Laser pin set
 #define SPINDLE_TYPE                SpindleType::LASER // only one spindle at a time
@@ -82,10 +78,7 @@
 
 #define X_LIMIT_PIN                 GPIO_NUM_36
 #define Y_LIMIT_PIN                 GPIO_NUM_35
-
-#if defined(USR_Z_MOTOR)
 #define Z_LIMIT_PIN                 GPIO_NUM_34
-#endif
 
 #define PROBE_PIN                   GPIO_NUM_2
 
@@ -113,7 +106,6 @@
 #define GRBL_SPI_FREQ 			    40000000
 
 // === Default settings
-// #define DEFAULT_STEP_PULSE_MICROSECONDS I2S_OUT_USEC_PER_PULSE
 #define DEFAULT_STEP_PULSE_MICROSECONDS     10
 
 #define DEFAULT_STEPPER_IDLE_LOCK_TIME      25

@@ -22,7 +22,7 @@
 
 #include "language_en.h"
 #include "language_ch.h"
-// #include "language_de.h"
+#include "language_de.h"
 
 extern lv_obj_t *mks_src;
 

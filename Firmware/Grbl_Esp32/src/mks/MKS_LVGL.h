@@ -9,7 +9,7 @@
 #include "MKS_SDCard.h"
 
 
-#define MKS_GRBL_CMD_SEND(A)            serila_write_into_buffer((uint8_t *)A)   
+#define MKS_GRBL_CMD_SEND(A)            serial_write_into_buffer((uint8_t *)A)   
 
 #define MKS_GRBL_WEB_CMD_SEND(A)        serial_web_input_into_buffer((uint8_t *)A)
 #define MKS_GRBL_WEB_HEX_CMD_SEND(A)    serial_web_input_into_hex(A)

@@ -47,9 +47,61 @@ void mc_language_init(void) {
 		mc_language.dis_no_hard_homing = DIS_NO_HARD_HOME_EN;
 		mc_language.dis_homing_succeed = DIS_HOME_SUCCEED_EN;
 		mc_language.dis_homing_fail = DIS_HOME_FAIL_EN;
-		mc_language.dis_probe_set = DIS_PROBE_SET;
+		mc_language.dis_probe_set = DIS_PROBE_SET_EN;
 		mc_language.dis_probe_succeed = DIS_PROBE_SECCEED_EN;
 		mc_language.dis_probe_fail = DIS_PROBE_FAIL_EN;
+		mc_language.dis_hard_limit = DIS_HARD_LIMIT_EN;
+		mc_language.dis_soft_limit = DIS_SOFT_LIMIT_EN;
+		mc_language.dis_unlock = DIS_UNLOCK_EN;
+		mc_language.dis_wait_mc_stop = DIS_WAIT_MC_STOP_EN;
+		mc_language.dis_pos_succeed = DIS_POS_SUCCEED_EN;
+	}
+	else if(mks_grbl.language = Deutsch) {
+		mc_language.back = BACK_DE;
+		mc_language.yes = YES_DE;
+		mc_language.no = NO_DE;
+
+		mc_language.control = CONTROL_DE;
+		mc_language.sculpture = SCULPTURE_DE;
+		mc_language.tool = TOOL_DE;
+		mc_language.Mpos = MPOS_DE;
+		mc_language.Wpos = WPOS_DE;
+		mc_language.wifi_connect = WIFI_CONNECT_DE;
+		mc_language.wifi_disconnect = WIFI_DISCONNECT_DE;
+
+		mc_language.xy_clear = XY_CLEAR_DE;
+		mc_language.z_clear = Z_CLEAR_DE;
+		mc_language.knife = KNIFE_DE;
+		mc_language.next = NEXT_DE;
+		mc_language.up = UP_DE;
+		mc_language.cooling = COOLING_DE;
+		mc_language.position = POSITION_DE;
+		mc_language.speed_high = SPEED_HIGH_DE;
+		mc_language.speed_mid = SPEED_MID_DE;
+		mc_language.speed_low = SPEED_LOW_DE;
+		mc_language.spindle = SPINDLE_DE;
+		mc_language.carve = CARVE_DE;
+
+		mc_language.dis_no_sd_card = DIS_NO_SDCARD_DE;
+
+		mc_language.hold = HOLD_DE;
+		mc_language.cycle = CYCLE_DE;
+		mc_language.stop = STOP_DE;
+		mc_language.adjust = ADJUST_DE;
+
+		mc_language.dis_stop_print = DIS_STOP_CARVE_DE;
+		mc_language.dis_homing = DIS_HOMEING_DE;
+		mc_language.dis_no_hard_homing = DIS_NO_HARD_HOME_DE;
+		mc_language.dis_homing_succeed = DIS_HOME_SUCCEED_DE;
+		mc_language.dis_homing_fail = DIS_HOME_FAIL_DE;
+		mc_language.dis_probe_set = DIS_PROBE_SET_DE;
+		mc_language.dis_probe_succeed = DIS_PROBE_SECCEED_DE;
+		mc_language.dis_probe_fail = DIS_PROBE_FAIL_DE;
+		mc_language.dis_hard_limit = DIS_HARD_LIMIT_DE;
+		mc_language.dis_soft_limit = DIS_SOFT_LIMIT_DE;
+		mc_language.dis_unlock = DIS_UNLOCK_DE;
+		mc_language.dis_wait_mc_stop = DIS_WAIT_MC_STOP_DE;
+		mc_language.dis_pos_succeed = DIS_POS_SUCCEED_DE;
 	}
 }
 
@@ -112,6 +164,9 @@ void set_language_btn_style(uint8_t language) {
 
 			lv_btn_set_style(language_page.imgbtn_en, LV_BTN_STYLE_REL, &mks_global.language_btn_rel_style);
 			lv_btn_set_style(language_page.imgbtn_en,LV_BTN_STYLE_PR, &mks_global.language_btn_rel_style);
+
+			lv_btn_set_style(language_page.imgbtn_de, LV_BTN_STYLE_REL, &mks_global.language_btn_rel_style);
+			lv_btn_set_style(language_page.imgbtn_de,LV_BTN_STYLE_PR, &mks_global.language_btn_rel_style);
 		break;
 
 		case 1: 
@@ -120,6 +175,9 @@ void set_language_btn_style(uint8_t language) {
 
 			lv_btn_set_style(language_page.imgbtn_en, LV_BTN_STYLE_REL, &mks_global.language_btn_pr_style);
 			lv_btn_set_style(language_page.imgbtn_en,LV_BTN_STYLE_PR, &mks_global.language_btn_pr_style);
+
+			lv_btn_set_style(language_page.imgbtn_de, LV_BTN_STYLE_REL, &mks_global.language_btn_rel_style);
+			lv_btn_set_style(language_page.imgbtn_de,LV_BTN_STYLE_PR, &mks_global.language_btn_rel_style);
 		break;
 
 		case 2: 
@@ -128,6 +186,9 @@ void set_language_btn_style(uint8_t language) {
 
 			lv_btn_set_style(language_page.imgbtn_en, LV_BTN_STYLE_REL, &mks_global.language_btn_rel_style);
 			lv_btn_set_style(language_page.imgbtn_en,LV_BTN_STYLE_PR, &mks_global.language_btn_rel_style);
+
+			lv_btn_set_style(language_page.imgbtn_de, LV_BTN_STYLE_REL, &mks_global.language_btn_pr_style);
+			lv_btn_set_style(language_page.imgbtn_de,LV_BTN_STYLE_PR, &mks_global.language_btn_pr_style);
 		break;
 	}
 }
@@ -181,6 +242,7 @@ void draw_language(void) {
 	language_page.imgbtn_back = lv_imgbtn_creat_mks(mks_global.mks_src_1, language_page.imgbtn_back, &png_back_pre, &back, LV_ALIGN_IN_LEFT_MID, 10, -15, event_handler);
 	language_page.imgbtn_simple_cn = mks_lv_btn_set(mks_global.mks_src, language_page.imgbtn_simple_cn, 130, 50, 20, 110, event_handler);
 	language_page.imgbtn_en = mks_lv_btn_set(mks_global.mks_src, language_page.imgbtn_en, 130, 50, 20, 110 + 60, event_handler);
+	language_page.imgbtn_de = mks_lv_btn_set(mks_global.mks_src, language_page.imgbtn_de, 130, 50, 20, 110 + 120, event_handler);
 
 	language_num = language_select->get();
 
@@ -189,6 +251,7 @@ void draw_language(void) {
 	label_for_imgbtn_name(mks_global.mks_src, language_page.label_back, language_page.imgbtn_back, 0, 0, "back");
 	label_for_btn_name(language_page.imgbtn_simple_cn, language_page.label_simple_cn , 0, 0, "中文");
 	label_for_btn_name(language_page.imgbtn_en, language_page.label_en, 0, 0, "English");
+	label_for_btn_name(language_page.imgbtn_de, language_page.label_de, 0, 0, "Deutsch");
 	mks_ui_page.mks_ui_page = MKS_UI_LANGUAGE;
 }
 

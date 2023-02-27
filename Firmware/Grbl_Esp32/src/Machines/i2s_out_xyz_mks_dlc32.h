@@ -188,5 +188,5 @@
 
 
 #define DEFAULT_BEEP_STATUS                 1
-#define DEFAULT_LANGUAGE_STATUS             1       // default simple engliash
+#define DEFAULT_LANGUAGE_STATUS             1       // default simple english
 

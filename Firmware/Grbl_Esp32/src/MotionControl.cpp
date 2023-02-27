@@ -227,6 +227,7 @@ void mc_arc(float*            target,
             position[axis_1] = center_axis1 + r_axis1;
             position[axis_linear] += linear_per_segment;
             pl_data->feed_rate = original_feedrate;  // This restores the feedrate kinematics may have altered
+            limitsCheckSoft(position);
             cartesian_to_motors(position, pl_data, previous_position);
             previous_position[axis_0]      = position[axis_0];
             previous_position[axis_1]      = position[axis_1];
@@ -238,6 +239,7 @@ void mc_arc(float*            target,
         }
     }
     // Ensure last segment arrives at target location.
+    limitsCheckSoft(target);
     cartesian_to_motors(target, pl_data, previous_position);
 }
 
@@ -367,26 +369,21 @@ void mc_homing_cycle(uint8_t cycle_mask) {
                 }
             }
         }
-
         if (no_cycles_defined) {
             report_status_message(Error::HomingNoCycles, CLIENT_ALL);
         }
     }
-
     protocol_execute_realtime();  // Check for reset and set system abort.
-
-    if (sys.abort) { return;  // Did not complete. Alarm state set by mc_alarm.
+    if (sys.abort) {
+        return;  // Did not complete. Alarm state set by mc_alarm.
     }
     // Homing cycle complete! Setup system for normal operation.
     // -------------------------------------------------------------------------------------
     // Sync gcode parser and planner positions to homed position.
     gc_sync_position();
-
     plan_sync_position();
-
     // This give kinematics a chance to do something after normal homing
     kinematics_post_homing();
-
     // If hard limits feature enabled, re-enable hard limits pin change register after homing cycle.
     limits_init();
 }
@@ -404,7 +401,6 @@ GCUpdatePos mc_probe_cycle(float* target, plan_line_data_t* pl_data, uint8_t par
     }
     // Finish all queued commands and empty planner buffer before starting probe cycle.
     protocol_buffer_synchronize();
-    
     if (sys.abort) {
         return GCUpdatePos::None;  // Return if system reset has been issued.
     }
@@ -430,6 +426,7 @@ GCUpdatePos mc_probe_cycle(float* target, plan_line_data_t* pl_data, uint8_t par
     }
     // Setup and queue probing motion. Auto cycle-start should not start the cycle.
     grbl_msg_sendf(CLIENT_SERIAL, MsgLevel::Info, "Found");
+    limitsCheckSoft(target);
     cartesian_to_motors(target, pl_data, gc_state.position);
     // Activate the probing state monitor in the stepper module.
     sys_probe_state = Probe::Active;

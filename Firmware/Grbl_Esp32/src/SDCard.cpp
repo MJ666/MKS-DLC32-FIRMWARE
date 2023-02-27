@@ -236,7 +236,6 @@ float sd_report_perc_complete() {
     return (float)myFile.position() / (float)myFile.size() * 100.0f;
 }
 
-// mks fix
 uint32_t sd_get_current_line_number() {
     return sd_current_line_number;
 }

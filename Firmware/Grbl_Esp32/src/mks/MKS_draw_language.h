@@ -65,10 +65,6 @@ typedef struct {
     const char *rapid_speed;
     const char *carve_times;
 
-
-    
-    
-    
     /* 提示语 */
     const char *dis_stop_print;
     const char *dis_homing;
@@ -78,6 +74,11 @@ typedef struct {
     const char *dis_probe_set;
     const char *dis_probe_succeed;
     const char *dis_probe_fail;
+    const char *dis_hard_limit;
+    const char *dis_soft_limit;
+    const char *dis_unlock;
+    const char *dis_wait_mc_stop;
+    const char *dis_pos_succeed;
 }mc_lg_muilt_t;
 extern mc_lg_muilt_t mc_language;
 

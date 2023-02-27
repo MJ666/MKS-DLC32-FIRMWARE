@@ -54,5 +54,5 @@ void execute_realtime_command(Cmd command, uint8_t client);
 bool is_realtime_command(uint8_t data);
 
 // mks
-void serila_write_into_buffer(uint8_t *data);
+void serial_write_into_buffer(uint8_t *data);
 void serial_web_input_into_buffer(uint8_t *data);

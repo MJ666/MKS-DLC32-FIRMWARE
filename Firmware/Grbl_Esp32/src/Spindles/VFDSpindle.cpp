@@ -367,8 +367,8 @@ namespace Spindles {
         }
 
         if (_rts_pin == -1) {
-            grbl_msg_sendf(CLIENT_SERIAL, MsgLevel::Info, "Undefined VFD_RS485_RTS_PIN");
-            pins_settings_ok = false;
+            grbl_msg_sendf(CLIENT_SERIAL, MsgLevel::Info, "Using Auto-RTS");
+            pins_settings_ok = true;
         }
 
         if (laser_mode->get()) {
